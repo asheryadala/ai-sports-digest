@@ -97,12 +97,19 @@ def get_topic(topic):
     try:
         with st.spinner(f"Getting results for: {topic}..."):
             response = requests.post(n8n_URL, json={"topic": topic}, timeout=15)
+
+            # DEBUG: show status and raw response in the app
+            st.write("DEBUG — Status code:", response.status_code)
+            st.write("DEBUG — Raw response text:", response.text)
+
             if response.status_code == 200:
                 return response.text
             else:
                 return "[]"
     except Exception as e:
+        st.error(f"Request failed: {e}")
         return "[]"
+
 
 # Display results
 def get_results(data_text):
@@ -154,5 +161,6 @@ if st.button("Search"):
 if st.session_state.search_visible and st.session_state.search_response:
     st.markdown(f"## Results for: _{st.session_state.search_topic}_")
     get_results(st.session_state.search_response)
+
 
 
