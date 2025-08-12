@@ -5,7 +5,7 @@ import base64
 
 # URLs
 n8n_URL = "https://caic-n8n-stage.k8s.stage.ix.statsperform.cloud/webhook/ai.digest"
-template_URL = "https://raw.githubusercontent.com/asher2609/ai-digest/main/SP.template.png"
+template_URL = "https://raw.githubusercontent.com/asheryadala/ai-sports-digest/main/SP.template.png"
 
 # Topics
 topics = [
@@ -154,4 +154,5 @@ if st.button("Search"):
 if st.session_state.search_visible and st.session_state.search_response:
     st.markdown(f"## Results for: _{st.session_state.search_topic}_")
     get_results(st.session_state.search_response)
+
 
